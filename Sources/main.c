@@ -11,6 +11,14 @@
 * Notes:
 *
 * See DC16.h for more inf0z...		
+*
+*	CODE UPDATE INFORMATION
+*
+*	Dc 16 Web Badge
+* Author:		Orbital_sFear
+*
+* Description: Main file to run the Dc16 Web Badge using basic HTTP/1.1 Proto.	
+*
 *******************************************************************************/
 
 #include <hidef.h>          /* for EnableInterrupts macro */

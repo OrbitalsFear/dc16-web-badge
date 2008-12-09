@@ -1,0 +1,3 @@
+#!/bin/bash
+
+make PLATFORM=connectwime CPATH=/Development/pv_powered/build/cygwin340/usr/include $1 $2

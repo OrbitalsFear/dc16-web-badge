@@ -1,0 +1,4 @@
+./config/database.yml
+./config/environment.rb
+./.server_sync
+./.server_ignore

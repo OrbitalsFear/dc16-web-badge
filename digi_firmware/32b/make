@@ -1,0 +1,3 @@
+#!/bin/bash
+
+make PLATFORM=connectme $1 $2

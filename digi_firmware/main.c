@@ -20,7 +20,7 @@
 /************/
 	//Comment this out to compile in ubuntu
 	//Uncomment it to compile for NetOS 6.3 using a digi connet me-c
-#define DIGI
+//#define DIGI
 
 	//Uncomment this to enable the auto reboot function (digi only)
 //#define AUTO_REBOOT

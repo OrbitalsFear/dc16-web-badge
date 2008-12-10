@@ -10,4 +10,7 @@ class Dc16Controller < ApplicationController
 
 	def make
 	end
+
+	def team
+	end
 end

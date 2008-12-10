@@ -1,24 +1,45 @@
 <html>
 <head>
 	<title>DC16 Web badge</title>
-	<link href="/default.css" media="screen" rel="stylesheet" type="text/css" />
+	<style type="text/css">body{font-family:helvetica,lucida grande,arial;font-size:12px;margin:0;padding:0;}.main_header{width:1024px;height:70px;background-color:#f9f9f9;background-image:url('/header_bg.jpg');border:solid 1px;font-weight:bold;font-size:24.0pt;mso-bidi-font-size:10.0pt;font-family:Tahoma;mso-fareast-font-family:"MS Mincho";mso-pagination:widow-orphan;margin-left:auto;margin-right:auto;}.main_body{width:1024px;border:solid 1px;padding-top:-1px;margin-top:-1px;margin-left:auto;margin-right:auto;}.main_view{float:left;width:800;padding-top:-1px;margin-top:-1px;margin-left:auto;margin-right:auto;}.nav{float:left;width:220;}.description{font-weight:bold;}.centered{display:block;margin-left:auto;margin-right:auto;}</style>
 </head>
 <body>
 	<div class="main_body">
-		<div class="main_header">DC16 Web badge</div>	<!-- header -->
-		<div style="clear: both;"></div>
-		<div style="nav">
-			<ul style="nav_list">
-				<a href="/">Home</a>
-				<a href="/how.htm">How it works</a>
-				<a href="/story.htm">The story</a>
-				<a href="/make.htm">Make your own</a>
-				<a href="/team.htm">The team</a>
+		<div class="main_header">DC16 Web-badge</div>	<!-- header -->
+		<div class="nav">
+			<ul class="nav_list">
+				<li><a href="/dc16/index">Home</a></li>
+				<li><a href="/dc16/how">How it works</a></li>
+				<li><a href="/dc16/story">The story</a></li>
+				<li><a href="/dc16/make">Make your own</a></li>
+				<li><a href="/dc16/team">The team</a></li>
 			</ul>
 		</div>
-		<div style="main_view">
-			Index.html
+		<div class="main_view">
+			<p><div class="description">Motiviation</div> Def Con is a wonderful thing.  Perhaps the most interesting group of people I've ever meet.  After a 16 hour drive to reach Def Con, my friends and I got into the badge line and waited.  Once we all had our badges it was off to staples to get memory cards.</p>
+
+<p>The default functionality of the badge is cool and it was fun playing with it.  When I found out what the badge did, I agreed it was a file transferring device, but not over IR.  The IR is cool and its fun to screw with TV's but I wanted something more interesting.  The idea for the Dc16 Web-badge was born.</p>
+
+<p>Our good friend Joe Grand was kind enough to drag TX/RX pins onto the 6 pin connector (SCI2), and connected to LED's 3 and 4 (SCI1).  This small act is what makes the web badge possible as a completely stand alone solution.  The original attempt made to create the web badge used the USB port.  The main problem with with this solution is it tighed the web badge to a computer to work, or writing complex USB drivers.  SCI is an exteremly simple interface that just about everything talks.</p>
+
+<p>I attempted to create a working version of the webserver while at Def Con, but it proved to have too many pitfalls.  Being silent while the awards were giving out I decided that I'd carry on and make the web badge a reality.  Digging through my box of random electronics, I found some Digi ConnectMe from my old job.  Now I had all the pieces I needed to make a completely stand alone solution.  The work begain</p>
+
+<p>The first limitation I set on myself was to require any def con'er with a working badge to duplicate this solution at some level for less than $10 bucks.  Although its not possible to create a fully stand alone version for that much money, it is very possible to use your computer as the serial-to-ip converter.</p>
+
+<p>Since you have to pay for the full version of code warrior if you use more than 2^15 bytes, I required my code to be smaller than that.  This proved to be very difficult.  Most of the dc16 code had to be removed and the amount of logic that could be put into its place was limiting.  Even so, the trimming process was completed and the whole web server solution was implemented in less than 500 lines.</p>
+
+<div class="description">Pit Falls</div>
+<ul>
+	<li>SCI Baud Rate - When you get into simple chip's like the one on our Dc16, you lose a few simplifications.  Baud rates to me always consisted of: 9600, 38400, 115200 etc.  With the Dc16, the only way ot create baud rates is through an equation based on the clock rate.  To figure out the correct time I wrote a program that create a z pattern with the 8 bits.  The Clk rate increased as it printed out the pattern.  Watching this on the computer with a known baud rate I found the correct clock rate and that all the bits needed to be inverted.  Luckly this chip has a built in feature for that.</li>
+	<li>Power Supply Noise - The first wall wart I used to power the web badge created a huge amount of DC noise.  So much that I had a 8% error margin, way way way too high.  One of my good friends let me use his oscilloscope which uncovered the problem.  The near term solution was a whole bunch of AA batteries and later, some better wall warts.</li>
+	<li>Communcation Hanging - The original code in the Dc16 has a problematic line in the SPI interface.  It is possible for the code to block until the end of time waiting for a reply that may never come.  Also, on the SCI interface to the outside world the same problem was true.  To fix this I implemented a simple but affective timeout solution that ran off one of the chip's interrupts, ths combined with some simple code changes protected the code from hang ups.</li>
+	<li>Communcation D.O.S. - The first few versions of the IP-tp-Serial code allowed for some very simple denial of service attackes.  I had to completely revamp the code to create a queue system with time outs.  D.O.S. is still possible but you have to want to take this guy down, instead of trying to honestly use it and taking it down like before.</li>
+	<li>Bad Sauder Joints - The badge I got from Def Con had faulty sauder joints on the SD memory card's holder.  As you can imagine this cause a lot of wasted time.  I finally found a low powered iron and some thin sauder, retouched all the joints and solved the problem.</li>
+	<li>Floating Ground - Lets face it, computer science guys that play with electronics make some dumb mistakes.  I made several.  My crown bone head manover was to create a system with no common ground.  During my testing I had the USB interface plugged into my computer and using that same computer to talk over the serial interface.  This of course creates a common ground, everything worked fine.  When I started testing things on the Digi, I had the USB plugged in, which gave me a float ground, but a ground reference.  Without the USB plugged in, the thing wouldn't work at all.  I chased this in code for litterially days until one day I accedentally touch the badge to the Digi's ground wire and it worked for a second.  I though longer about it, realized what I had done and rewired everything.  This is proof that its always a hardward problem.  Which brings me to one of my fav. jokes.  How many software guys does it take to screw in a light bulb?  None its a hardware problem.</li>
+</ul>
+
 		</div>
+		<div style="clear: both;"></div>
 	</div>	<!-- main_body -->
 </body>
 </html>

@@ -1,10 +1,10 @@
-<p><div class="description">Description</div> The Dc16 Web badge is network solution.  The Dc16 doesn't have any means to talk directly over IP, nor could it affectively run an ip stack (given the coders motiviation to write one).  Below is a network diagram and explanation of each piece required to make the DC16 Web-badge a reality.</p>
+<p><div class="description">Description</div>The DC16 Web badge is network solution. The DC16 doesn't have any means to talk directly over IP, nor could it affectively run an IP stack (given the coders motivation to write one). Below is a network diagram and explanation of each piece required to make the DC16 Web-badge a reality.</p>
 
-<img class="centered" src="/images/network_layout.jpg">
+<img class="centered" src="/netlay.jpg">
 
-<p><div class="description">Dc16 Serial Interface</div> To get the content out the Dc16 uses one or both SCI interfaces built into the chip.  The sci interface talks via standard HTTP requests.  To feed the SCI interface, a user can run the Ip converter code directly on their computer or, buy a Digi ConnectMe-C and flash the custom firmware onto the chip.</p>
+<p><div class="description">DC16 Serial Interface</div>HTTP/1.1 is a very simple interface. The DC16 provides the bare minimum that still allows a standard web browser to talk. When a client sends a requests, the GET line is the only one that is read. From this line the DC16 attempts to find the requested file on the SD memory card. A basic response is crafted and sent back to the user.</p>
 
-<p><div class="description">Dc16 Webserver</div> HTTP/1.1 is a very simple interface.  The Dc16 provides the bare minimum that still allows a standard web browser to talk.  When a client sends a requests, the GET line is the only one that is read.  From this line the Dc16 attempts to find the requested file on the SD memory card.  A basic response is crafted and sent back to the user.</p>
+<p><div class="description">DC16 Web server</div>HTTP/1.1 is a very simple interface. The Dc16 provides the bare minimum that still allows a standard web browser to talk. When a client sends a requests, the GET line is the only one that is read. From this line the Dc16 attempts to find the requested file on the SD memory card. A basic response is crafted and sent back to the user.</p>
 
 <p>
 <div class="description">Example Response</div>
@@ -12,13 +12,13 @@ HTTP/1.1 200 OK<BR>
 Server: DC16 Web Badge 1.0<BR>
 Accept-Ranges: bytes<BR>
 Content-Length: 9<BR>
-Content-Type: text/html
+Content-Type: text/html <BR>
 </p>
 
-<p><div class="description">Serial to IP</div> The Ip Converter doesn't know anything about http requests.  All it does is a dumb data exchange between the Ip interface to the serial interface and back again.  The converter is made to handle multiple clients at one time.  Although the serial interface can only service one request at a time, multiple requests can be queued and services when the Dc16 has time.  This increases performance several times.</p>
+<p><div class="description">Serial to IP</div>The IP converter doesn't know anything about http requests. All it does is a dumb data exchange between the IP interface to the serial interface and back again. The converter is made to handle multiple clients at one time. Although the serial interface can only service one request at a time, multiple requests can be queued and services when the DC16 has time. This increases performance several times.</p>
 
-<p><div class="description">Webserver Cloud</div> To increaes bandwidth a router is setup with a round robin scheduling algorithm.  This allows use to distribute requests across multiple Dc16's creating a web cluster.  The webcluster only works if each badge has exactly the same data on its memory cards.</p>
+<p><div class="description">Web Server Cloud</div>To increase bandwidth a router is setup with a round robin scheduling algorithm. This allows use to distribute requests across multiple DC16's creating a web cluster. The web cluster only works if each badge has exactly the same data on its memory cards.</p>
 
-<p><div class="description">Webpage</div> To server out a webpage, the Dc16 looks at the SD card attached to it.  The SD card has a static webpage stored on it.  There is no ability to deal with directory structure, thus all files must reside on the root filesystem.  Any file on the SD card is accessable users through a proper get request.  The webbadge only knows how to handle get requests.</p>
+<p><div class="description">Web Page</div>To server out a web page, the DC16 looks at the SD card attached to it. The SD card has a static web page stored on it. There is no ability to deal with directory structure, thus all files must reside on the root file system. Any file on the SD card is accessible users through a proper get request. The web badge only knows how to handle get requests.</p>
 
-<p><div class="description">Future Projects</div> It wouldn't take a lot of exact work to allow the Dc16 to handle two requests at the same time (one on each SCI).  Also, it is quite possible to accept post's and store data to the SD card thus creating built in functionality such as web forums or content uploaders.  Again this isn't implemented in the current version.</p>
+<p><div class="description">Future Projects</div>It wouldn't take a lot of exact work to allow the DC16 to handle two requests at the same time (one on each SCI). Also, it is quite possible to accept post's and store data to the SD card thus creating built in functionality such as web forums or content uploaders. Again this isn't implemented in the current version.</p>

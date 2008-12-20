@@ -1,119 +1,117 @@
 <div class="description">Requirements</div>
+
 <ul>
-	<li>DEFCON 16 Badge</li>
-	<li>USB Micro-B Receptacle</li>
-	<li>USB A-type to B-type Cable</li>
-	<li>Female DE-9 Connector</li>
-	<li>Alligator Clips</li>
-	<li>18 Gauge Wire</li>
-	<li>Low Wattage Sauder Iron</li>
-	<li>Very Small Sauder</li>
-	<li>2Gb SD Memory Card</li>
-	<li>3V Wall Wart</li>
-	<li>Multimeter</li>
+        <li>DEFCON 16 Badge</li>
+        <li>USB Micro-B Receptacle</li>
+        <li>USB A-type to B-type Cable</li>
+        <li>Female DE-9 Connector</li>
+        <li>Alligator Clips</li>
+        <li>18 Gauge Wire</li>
+        <li>Low Wattage Solder Iron</li>
+        <li>Very Small Solder</li>
+        <li>2Gb SD Memory Card</li>
+        <li>3V Wall Wart</li>
+        <li>Multimeter</li>
 </ul>
 
-<p><div class="description">Sauder on the USB Connector</div>
-All the badges from DEFCON came with the ability to be programmed (thanks Kingpin).  To do these, you must sauder a USB Micro-B receptacle onto your badge.  I don't think it matters what you do with pin 4, it isn't hooked to anything.</p>
+<p><div class="description">Solder on the USB Connector</div>All the badges from DEFCON came with the ability to be programmed (thanks Kingpin).  To do these, you must sauder a USB Micro-B receptacle onto your badge.  I don't think it matters what you do with pin 4, it isn't hooked to anything.</p>
 
-<p><div class="description">Download Freescale CodeWarrior</div>
-To compile the badge's code you need to download Evaluation: CodeWarrior for Microcontrollers.  The IDE creates the dc16.abs.s19 file needed to be loaded onto the badge.</p>
+<p><div class="description">Download Freescale CodeWarrior</div>To compile the badge's code you need to download Evaluation: CodeWarrior for Microcontrollers. The IDE creates the DC16.abs.s19 file needed to be loaded onto the badge.</p>
+
 <a href="http://www.freescale.com/webapp/sps/site/overview.jsp?nodeId=01272600612247">Freescale CodeWarrior 6.2 Evaluation</a>
 
-<p><div class="description">Download Freescale JM60 GUI</div>
-To reflash the code onto the badge, you need Freescale's JM60 GUI.  The only version I've used is V1.1 however the only thing I could find online is V1.2.  You can find version 1.1 on the DC16 CD.</p>
+<p><div class="description">Download Freescale JM60 GUI</div>To re-flash the code onto the badge, you need Freescale's JM60 GUI. The only version I've used is V1.1 however the only thing I could find on line is V1.2. You can find version 1.1 on the DC16 CD.</p>
+
 <a href="http://www.freescale.com/webapp/sps/download/license.jsp?colCode=JM60_GUI_INSTALLER_V1.2&prodCode=S08JM&location=null&fpsp=1">Freescale JM60 GUI V1.2</a>
 
-<p><div class="description">Get the source code</div>
-The Dc16 Web-Badge's source code is stored on github.  It contains everything you need to create the Dc16 Web-Badge.</p>
-<a href="http://github.com/OrbitalsFear/dc16-web-badge/tree/master">git clone git://github.com/OrbitalsFear/dc16-web-badge.git</a>
+<p><div class="description">Get the source code</div>The DC16 Web-Badge's source code is stored on github. It contains everything you need to create the DC16 Web-Badge.</p>
+
+git clone <a href="http://github.com/OrbitalsFear/dc16-web-badge/tree/master">git://github.com/OrbitalsFear/dc16-web-badge.git</a>
 
 
 <p><div class="description">Compile the source code</div>
 <ol>
-	<li>Start CodeWarrior IDE</li>
-	<li>Click Start Using CodeWarrior</li>
-	<li>Click File - Open - DC16.mcp</li>
-	<li>Ensure that the compile mode is P&E Multilink/Cyclone Pro</li>
-	<li>Press F7 to Compile</li>
-	<li>dc16.abs.s19 now exists and your are done compiling</li>
+        <li>Start CodeWarrior IDE</li>
+        <li>Click Start Using CodeWarrior</li>
+        <li>Click File - Open - DC16.mcp</li>
+        <li>Ensure that the compile mode is P&E Multilink/Cyclone Pro</li>
+        <li>Press F7 to Compile</li>
+        <li>dc16.abs.s19 now exists and your are done compiling</li>
 </ol>
 </p>
 
 <p><div class="description">Flash the badge</div>
 <ol>
-	<li>Connect the USB on the badge to a Windows computer</li>
-	<li>Presh and hold the button on the badge</li>
-	<li>Power up the badge and ensure LEDS 1 and 8 are solid on</li>
-	<li>If a driver is needed, its on your DC16 CD</li>
-	<li>Start Freescale JM60 GUI</li>
-	<li>Select Bootloader</li>
-	<li>Select your newly created dc16.abs.s19 file</li>
-	<li>Click Execute</li>
-	<li>Unplug the USB from your badge and reboot it</li>
-</ol>
-</p>
+        <li>Connect the USB on the badge to a Windows computer.</li>
+        <li>Presh and hold the button on the badge.</li>
+        <li>Power up the badge and ensure LEDS 1 and 8 are solid on.</li>
+        <li>If a driver is needed, its on your DC16 CD</li>
+        <li>Start Freescale JM60 GUI</li>
+        <li>Select Bootloader</li>
+        <li>Select your newly created dc16.abs.s19 file</li>
+        <li>Click Execute</li>
+        <li>Unplug the USB from your badge and reboot it</li>
+</ol>The Dc16 Web-Badge's source code is stored on github.  It contains everything you need to create the Dc16 Web-Badge.</p>
 
 <p><div class="description">SD card</div>
 <ol>
-	<li>Format the SD card to be Fat16</li>
-	<li>Copy the contence of the webpage folder or make your own</li>
-	<li>Ensure there are no folders on the SD card</li>
-	<li>Set the SD card to read only</li>
-	<li>Insert the SD card</li>
-	<li>LED 8 should go solid on</li>
+        <li>Format the SD card to be Fat16</li>
+        <li>Copy the contents of the webpage folder or make your own</li>
+        <li>Ensure there are no folders on the SD card</li>
+        <li>Set the SD card to read only</li>
+        <li>Insert the SD card</li>
+        <li>LED 8 should go solid on</li>
 </ol>
 </p>
 
-<p><div class="description">RS 232 connection</div>
-Here you have some choices.  There are two SCI interfaces to choose from.  SCI2 are the top left 2 pins on the six pin connector.  SCI1 are LED's 3 and 4.  SCI1 is more hard core because you must break the LED's 3,4 off your badge; then sauder to top top connection on each.  SCI2 can be sauder to without breaking anything.  Also the sauder pads are bigger and easier to get to.</p>
+<p><div class="description">RS 232 connection</div>Here you have some choices. There are two SCI interfaces to choose from. SCI2 are the top left 2 pins on the six pin connector. SCI1 are LED's 3 and 4. SCI1 is more hard core because you must break the LED's 3,4 off your badge; then solder to top top connection on each. SCI2 can be solder to without breaking anything. Also the solder pads are bigger and easier to get to.</p>
 
-<p><div class="description">Dc16 Web Badge user interface</div>
-When the badge boots up, the user must configure how its going to operate.  There are two input's you can give to the badge, click the button, and hold the button.  Holding the button will change the confguration on that step, and clicking the button will save that step and move to the next.  Below is the boot up sequence.<br></p>
+<p><div class="description">DC16 Web Badge user interface</div>When the badge boots up, the user must configure how its going to operate. There are two input's you can give to the badge, click the button, and hold the button. Holding the button will change the configuration on that step, and clicking the button will save that step and move to the next. Below is the boot up sequence.<br></p>
+
 <p>
+
 Boot sequence
 <ol>
-	<li>CPU Speed
-		<ul>
-			<li>1:0 - 48Mhz USB Enabled (default)</li>
-			<li>0:1 - 24Mhz</li>
-		</ul>
-	</li>
-	<li>SCI Interface
-		<ul>
-			<li>1:0 - SCI2 (default)</li>
-			<li>0:1 - SCI1</li>
-		</ul>
-	</li>
-	<li>Baud Rate
-		<ul>
-			<li>1:1 - 115200 (48Mhz default)</li>
-			<li>1:0 - 38400</li>
-			<li>0:1 - 9600 (24Mhz default)</li>
-		</ul>
-	</li>
+        <li>CPU Speed
+                <ul>
+                        <li>1:0 - 48Mhz USB Enabled (default)</li>
+                        <li>0:1 - 24Mhz</li>
+                </ul>
+        </li>
+        <li>SCI Interface
+                <ul>
+                        <li>1:0 - SCI2 (default)</li>
+                        <li>0:1 - SCI1</li>
+                </ul>
+        </li>
+        <li>Baud Rate
+                <ul>
+                        <li>1:1 - 115200 (48Mhz default)</li>
+                        <li>1:0 - 38400</li>
+                        <li>0:1 - 9600 (24Mhz default)</li>
+                </ul>
+        </li>
 </ol>
 After boot sequence
 <ul>
-	<li>LED 1 - Rx</li>
-	<li>LED 2 - Tx</li>
-	<li>LED 8 - SD Present</li>
+        <li>LED 1 - RX</li>
+        <li>LED 2 - TX</li>
+        <li>LED 8 - SD Present</li>
 </ul>
 </p>
 
 
 <p><div class="description">Testing your badge</div>
 <ol>
-	<li>Connect the TX,RX to pins 2 and 3</li>
-	<li>Connect the DE-9 to your computer</li>
-	<li>minicom - ttyUSB0 - 9600 8N1 - exit W/O reset</li>
-	<li>Power up your badge</li>
-	<li>Select USB enabled mode</li>
-	<li>Select SCI 1 or 2</li>
-	<li>Select 9600 baud</li>
-	<li>echo "GET / Something" > /dev/ttyUSB0&</li>
-	<li>cat /dev/ttyUSB0</li>
-	<li>The file called INDEX.HTM should have been printed out</li>
+        <li>Connect the TX,RX to pins 2 and 3</li>
+        <li>Connect the DE-9 to your computer</li>
+        <li>minicom - ttyUSB0 - 9600 8N1 - exit W/O reset</li>
+        <li>Power up your badge</li>
+        <li>Select USB enabled mode</li>
+        <li>Select SCI 1 or 2</li>
+        <li>Select 9600 baud</li>
+        <li>echo "GET / Something" > /dev/ttyUSB0&</li>
+        <li>cat /dev/ttyUSB0</li>
+        <li>The file called INDEX.HTM should have been printed out</li>
 </ol>
 </p>
-
